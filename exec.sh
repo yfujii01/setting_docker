@@ -4,19 +4,19 @@ CONTAINER_NAME=pc1
 # コマンドを表示
 set -x
 
-buil(){
-cp -r ~/.ssh .
-docker build -t mypc .
-rm -rf .ssh
+buil() {
+	cp -r ~/.ssh .
+	# docker build --no-cache -t mypc .
+	docker build -t mypc .
+	rm -rf .ssh
 
-docker stop pc1
-docker rm pc1
-docker run -d --name pc1 mypc
-docker ps
+	docker stop pc1
+	docker rm pc1
+	docker run -d --name pc1 mypc
+	docker ps
 
-docker exec -it pc1 bash
+	docker exec -it pc1 bash
 }
-
 
 all() {
 	docker stop pc1

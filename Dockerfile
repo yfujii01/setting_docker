@@ -45,7 +45,11 @@ ENV LANG=ja_JP.UTF-8
 # dotfiles(vim)
 RUN $HOME/go/bin/ghq get -p yfujii01/setting_vim
 # RUN cd $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_vim) && . deploy.sh
-RUN bash $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_vim)/deploy.sh
+RUN cd $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_vim) \
+	&& bash deploy.sh
+# RUN bash deploy.sh
+# WORKDIR $HOME
+
 # RUN dir=`$($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_vim)` \
 # 	cd $dir 
 # 	# . deploy.sh
