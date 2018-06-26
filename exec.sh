@@ -6,8 +6,8 @@ set -x
 
 buil() {
 	cp -r ~/.ssh .
-	# docker build --no-cache -t mypc .
-	docker build -t mypc .
+	docker build --no-cache -t mypc .
+	# docker build -t mypc .
 	rm -rf .ssh
 
 	docker stop pc1

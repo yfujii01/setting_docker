@@ -43,24 +43,22 @@ RUN $HOME/.fzf/install --all
 ENV LANG=ja_JP.UTF-8
 
 # dotfiles(vim)
-RUN $HOME/go/bin/ghq get -p yfujii01/setting_vim
-# RUN cd $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_vim) && . deploy.sh
-RUN cd $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_vim) \
+RUN $HOME/go/bin/ghq get -p yfujii01/setting_vim \
+&& cd $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_vim) \
 	&& bash deploy.sh
-# RUN bash deploy.sh
-# WORKDIR $HOME
 
-# RUN dir=`$($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_vim)` \
-# 	cd $dir 
-# 	# . deploy.sh
+# dotfiles(bash)
+RUN $HOME/go/bin/ghq get -p yfujii01/setting_bash \
+	&& cd $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_bash) \
+	&& git checkout -b mac origin/mac \
+	&& bash deploy.sh
+	# RUN cd $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_bash)
+	# RUN . deploy.sh
 
-# # dotfiles(bash)
-# RUN $HOME/go/bin/ghq get -p yfujii01/setting_bash
-# RUN cd $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_bash)
-# RUN . deploy.sh
-
-# # dotfiles(git)
-# RUN $HOME/go/bin/ghq get -p yfujii01/setting_git
+# dotfiles(git)
+RUN $HOME/go/bin/ghq get -p yfujii01/setting_git \
+	&& cd $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_git) \
+	&& bash deploy.sh
 # RUN cd $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_git)
 # RUN . deploy.sh
 
