@@ -41,22 +41,26 @@ RUN git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf \
 # anyenv
 RUN git clone https://github.com/riywo/anyenv $HOME/.anyenv
 
-# dotfiles(vim)
-RUN $HOME/go/bin/ghq get -p yfujii01/setting_vim \
-	&& cd $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_vim) \
-	&& bash deploy.sh
+RUN curl -L https://raw.github.com/yfujii01/dotfiles/master/dotfiles.sh > $HOME/dotfiles.sh \
+	&& sh $HOME/dotfiles.sh
 
-# dotfiles(bash)
-RUN $HOME/go/bin/ghq get -p yfujii01/setting_bash \
-	&& cd $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_bash) \
-	&& git checkout -b mac origin/mac \
-	&& bash deploy.sh
+# # dotfiles(vim)
+# RUN $HOME/go/bin/ghq get -p yfujii01/setting_vim \
+# 	&& cd $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_vim) \
+# 	&& bash deploy.sh
 
-# dotfiles(git)
-RUN $HOME/go/bin/ghq get -p yfujii01/setting_git \
-	&& cd $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_git) \
-	&& bash deploy.sh
+# # dotfiles(bash)
+# RUN $HOME/go/bin/ghq get -p yfujii01/setting_bash \
+# 	&& cd $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_bash) \
+# 	&& git checkout -b mac origin/mac \
+# 	&& bash deploy.sh
 
+# # dotfiles(git)
+# RUN $HOME/go/bin/ghq get -p yfujii01/setting_git \
+# 	&& cd $($HOME/go/bin/ghq root)/$($HOME/go/bin/ghq list | grep yfujii01/setting_git) \
+# 	&& bash deploy.sh
+
+# nodejs
 RUN . $HOME/.bashPathInit.bash \
 	&& anyenv install nodenv \
 	&& . $HOME/.bashPathInit.bash \

@@ -4,7 +4,7 @@ CONTAINER_NAME=pc1
 # コマンドを表示
 set -x
 
-buil() {
+build() {
 	cp -r ~/.ssh .
 	# docker build --no-cache -t mypc .
 	docker build -t mypc .
