@@ -17,12 +17,17 @@ eval "$(anyenv init -)"
 nodenv install 10.5.0
 nodenv global 10.5.0
 
-# ghq
-go get github.com/motemen/ghq
-
-# fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf && $HOME/.fzf/install --all
-
-# dotfile
-curl -L https://raw.github.com/yfujii01/dotfiles/master/dotfile.sh  && sh $HOME/dotfiles.sh
+# ビルドのための依存関係未解決
+## python
+#anyenv install pyenv
+#eval "$(anyenv init -)"
+#pyenv install 3.6.5
+#pyenv global 3.6.5
+#
+## ruby
+#anyenv install rbenv
+#eval "$(anyenv init -)"
+#rbenv install 2.5.1
+#rbenv global 2.5.1
+#
 
