@@ -2,12 +2,12 @@ FROM ubuntu:18.04
 
 LABEL "maintainer": "yfujii01 <fancl01@gmail.com>"
 
-ENV USER yfujii01
-ENV HOME /home/$USER
-RUN useradd --create-home --shell /bin/bash $USER
+#ENV USER yfujii01
+#ENV HOME /home/$USER
+#RUN useradd --create-home --shell /bin/bash $USER
 
-#ENV USER root
-#ENV HOME /root
+ENV USER root
+ENV HOME /root
 
 # ===================================================
 # rootでの設定
@@ -16,7 +16,7 @@ RUN useradd --create-home --shell /bin/bash $USER
 COPY . $HOME
 RUN chown -R $USER:$USER $HOME/.ssh && chmod -R 700 $HOME/.ssh
 
-RUN apt-get update && apt-get install -y curl wget zip git vim sudo
+RUN apt-get update && apt-get install -y curl wget zip git vim sudo zsh
 
 ENV LANG=ja_JP.UTF-8
 ENV LANG=C
@@ -31,6 +31,7 @@ WORKDIR $HOME
 # anyenvのインストール＋各言語のインストール
 RUN bash $HOME/work1.sh
 RUN bash $HOME/work2.sh
+#RUN bash $HOME/work4.sh
 
 
 CMD tail -f /dev/null
