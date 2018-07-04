@@ -100,4 +100,4 @@ RUN /bin/bash ${HOME}/dotfiles/deploy.sh
 #RUN source $HOME/work2.sh
 #RUN source $HOME/work4.sh
 
-
+CMD tail -f /dev/null
