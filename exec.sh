@@ -10,12 +10,13 @@ build() {
 	docker build -t mypc .
 	rm -rf .ssh
 
-	docker stop pc1
-	docker rm pc1
-	docker run -d --name pc1 mypc
-	docker ps
+	# docker stop pc1
+	# docker rm pc1
+	# docker run -d --name pc1 mypc
+	docker run -it --rm mypc bash
+	# docker ps
 
-	docker exec -it pc1 bash
+	# docker exec -it pc1 bash
 }
 
 all() {
